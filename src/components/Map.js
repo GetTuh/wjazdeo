@@ -49,8 +49,6 @@ export default function Map(){
           <PolylineOverlay 
           from={clickedPointFrom.lngLat}
           to={clickedPointTo.lngLat}
-          points={null} 
-
           >
           
           </PolylineOverlay>

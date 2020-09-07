@@ -4,7 +4,6 @@ import { CanvasOverlay } from 'react-map-gl'
 export default class PolylineOverlay extends PureComponent {
   _redraw ({ width, height, ctx, isDragging, project, unproject }) {
     const {color = 'red', lineWidth = 2, renderWhileDragging = true, from, to } = this.props
-
     async function returnRoute(from,to) {
       const points = await fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${from[0]},${from[1]};${to[0]},${to[1]}?geometries=geojson&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
               .then(response => response.json())
@@ -18,7 +17,6 @@ export default class PolylineOverlay extends PureComponent {
         ctx.lineWidth = lineWidth
         ctx.strokeStyle = color
         ctx.beginPath()
-        
         await points.forEach(point => {
           const pixel = project([point[0], point[1]])
           ctx.lineTo(pixel[0], pixel[1])
@@ -26,9 +24,7 @@ export default class PolylineOverlay extends PureComponent {
         ctx.stroke()
       }
     }
-    const points=returnRoute(from,to)
-    console.log(points)
-
+    returnRoute(from,to)
   }
 
   render () {
