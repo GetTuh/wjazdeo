@@ -9,16 +9,20 @@ export default function Map() {
     width: "100vw",
     height: "100vh",
     zoom: 10,
+    transitionDuration:1000,
   });
   const [clickedPointFrom, setClickedPointFrom] = useState(null);
   const [clickedPointTo, setClickedPointTo] = useState(null);
+  let viewportChanged=false;
   return (
     <div>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        onViewportChange={(nextViewport) => setViewport(nextViewport)}
+        onViewportChange={
+          viewportChanged=true,
+          (nextViewport) => setViewport(nextViewport)}
         onClick={(clickedPoint) => {
           !clickedPointFrom
             ? setClickedPointFrom(clickedPoint)
@@ -44,12 +48,15 @@ export default function Map() {
             <div>Do</div>
           </Marker>
         ) : null}
-        {clickedPointFrom && clickedPointTo && (
+        {
+        (viewportChanged)&&
+        clickedPointFrom && clickedPointTo && (
           <PolylineOverlay
             from={clickedPointFrom.lngLat}
             to={clickedPointTo.lngLat}
           ></PolylineOverlay>
         )}
+        <button>elo</button>
       </ReactMapGL>
     </div>
   );
