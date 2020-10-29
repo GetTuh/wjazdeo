@@ -57,7 +57,7 @@ export default function Map() {
           ></PolylineOverlay>
         )}
         <button>elo</button>
-      </ReactMapGL>
+      </ReactMapGL>     {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */ }
     </div>
   );
 }
