@@ -12,19 +12,20 @@ export default class PolylineOverlay extends PureComponent {
     } = this.props;
     let points;
     async function returnRoute(from, to) {
-      if(isDragging) points=null;
-      else{
-      points = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/driving/${from[0]},${from[1]};${to[0]},${to[1]}?geometries=geojson&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          return data.routes[0].geometry.coordinates;
-        });}
+      if (isDragging) points = null;
+      else {
+        points = await fetch(
+          `https://api.mapbox.com/directions/v5/mapbox/driving/${from[0]},${from[1]};${to[0]},${to[1]}?geometries=geojson&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            return data.routes[0].geometry.coordinates;
+          });
+      }
       await console.log(points);
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "lighter";
-      
+
       if ((renderWhileDragging || !isDragging) && points) {
         ctx.lineWidth = lineWidth;
         ctx.strokeStyle = color;
