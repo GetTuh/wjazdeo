@@ -1,0 +1,10 @@
+.switch-wrapper {
+  position: relative;
+}
+
+.center {
+  margin-left: 25cm;
+}
+.switch-wrapper > div {
+  position: absolute;
+}
