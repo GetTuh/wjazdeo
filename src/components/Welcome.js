@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { bounce } from "react-animations";
-import Radium, { StyleRoot } from "radium";
-
-const styles = {
-  bounce: {
-    animation: "x 1s",
-    animationName: Radium.keyframes(bounce, "bounce"),
-  },
-};
+import Fade from "react-reveal/Fade";
+import { Link } from "react-router-dom";
 export default (Welcome) => {
-  //   const [elo, setElo] = useState(styles.bounce);
   return (
-    <StyleRoot>
-      <div className="test" style={styles.bounce}>
-        placeholder
-      </div>
-    </StyleRoot>
+    <div>
+      <center>
+        <Fade left>
+          <Button variant="primary">Pasażer</Button>
+        </Fade>
+        <Fade right>
+          <Link to="/map">
+            <Button variant="secondary">Kierowca</Button>
+          </Link>
+        </Fade>
+      </center>
+    </div>
   );
 };
