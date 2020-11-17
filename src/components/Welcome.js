@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
-export default (Welcome) => {
+const Welcome = () => {
   return (
     <div className="center">
       <Fade>
@@ -16,3 +16,4 @@ export default (Welcome) => {
     </div>
   );
 };
+export default Welcome;

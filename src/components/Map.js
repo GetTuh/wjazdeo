@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactMapGL, { Marker, CanvasOverlay } from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
 
 export default function Map() {
