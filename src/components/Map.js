@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Layer } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
 
+import addRoute from "../api/addRoute";
+import getAll from "../api/getAll";
+
+import Button from "react-bootstrap/Button";
 export default function Map() {
   const [viewport, setViewport] = useState({
     latitude: 54.35,
@@ -50,13 +54,17 @@ export default function Map() {
           </Marker>
         ) : null}
         {viewportChanged && clickedPointFrom && clickedPointTo && (
-          <PolylineOverlay
-            from={clickedPointFrom.lngLat}
-            to={clickedPointTo.lngLat}
-          ></PolylineOverlay>
+          <div>
+            {" "}
+            <PolylineOverlay
+              from={clickedPointFrom.lngLat}
+              to={clickedPointTo.lngLat}
+            ></PolylineOverlay>
+          </div>
         )}
       </ReactMapGL>{" "}
       {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}
+      <Button onClick={}>Prześlij dane</Button>
     </div>
   );
 }

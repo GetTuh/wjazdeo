@@ -20,10 +20,8 @@ export default class PolylineOverlay extends PureComponent {
           .then((response) => response.json())
           .then((data) => data.routes[0].geometry.coordinates);
       }
-      await console.log(points);
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "lighter";
-
       if ((renderWhileDragging || !isDragging) && points) {
         ctx.lineWidth = lineWidth;
         ctx.strokeStyle = color;
