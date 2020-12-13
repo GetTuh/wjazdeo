@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
 
-import addRoute from "../api/addRoute";
-import getAll from "../api/getAll";
+import addRoute from "../../api/addRoute";
+import getAll from "../../api/getAll";
 
-import Button from "react-bootstrap/Button";
 export default function Map() {
   const [viewport, setViewport] = useState({
     latitude: 54.35,
@@ -45,7 +44,7 @@ export default function Map() {
             latitude={clickedPointFrom.lngLat[1]}
             longitude={clickedPointFrom.lngLat[0]}
           >
-            <Button>Od</Button>
+            <b className="text-color-primary"> Od</b>
           </Popup>
         ) : null}
         {clickedPointTo ? (
@@ -54,7 +53,7 @@ export default function Map() {
             latitude={clickedPointTo.lngLat[1]}
             longitude={clickedPointTo.lngLat[0]}
           >
-            <div>Do</div>
+            <div className="text-color-primary">Do</div>
           </Marker>
         ) : null}
         {viewportChanged && clickedPointFrom && clickedPointTo && (
