@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactMapGL, { Marker, Layer } from "react-map-gl";
+import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
 
 import addRoute from "../api/addRoute";
@@ -18,6 +18,7 @@ export default function Map() {
   const [clickedPointFrom, setClickedPointFrom] = useState(null);
   const [clickedPointTo, setClickedPointTo] = useState(null);
   let viewportChanged = false;
+  let unlockClicks = true;
   return (
     <div>
       <ReactMapGL
@@ -29,20 +30,23 @@ export default function Map() {
           (nextViewport) => setViewport(nextViewport))
         }
         onClick={(clickedPoint) => {
-          !clickedPointFrom
-            ? setClickedPointFrom(clickedPoint)
-            : setClickedPointTo(clickedPoint);
-          console.log(clickedPoint.lngLat);
+          if (!clickedPointFrom) {
+            setClickedPointFrom(clickedPoint);
+          } else {
+            if (!clickedPointTo) {
+              setClickedPointTo(clickedPoint);
+            }
+          }
         }}
       >
         {clickedPointFrom ? (
-          <Marker
+          <Popup
             key="from"
             latitude={clickedPointFrom.lngLat[1]}
             longitude={clickedPointFrom.lngLat[0]}
           >
-            <div>Od</div>
-          </Marker>
+            <Button>Od</Button>
+          </Popup>
         ) : null}
         {clickedPointTo ? (
           <Marker
@@ -55,7 +59,6 @@ export default function Map() {
         ) : null}
         {viewportChanged && clickedPointFrom && clickedPointTo && (
           <div>
-            {" "}
             <PolylineOverlay
               from={clickedPointFrom.lngLat}
               to={clickedPointTo.lngLat}
@@ -64,7 +67,7 @@ export default function Map() {
         )}
       </ReactMapGL>{" "}
       {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}
-      <Button onClick={}>Prześlij dane</Button>
+      {/* <Button onClick={}>Prześlij dane</Button> */}
     </div>
   );
 }
