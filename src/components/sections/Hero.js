@@ -44,10 +44,10 @@ const Hero = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1
-              className="mt-0 mb-16 reveal-from-bottom"
+              className="mt-0 mb-4 reveal-from-bottom"
               data-reveal-delay="200"
             >
-              Nie dojeżdżaj sam.
+              Nie dojeżdżaj <b className="text-color-primary">sam.</b>
             </h1>
             <div className="container-xs">
               <p
@@ -56,14 +56,16 @@ const Hero = ({
               >
                 <ul class="nobull">
                   <li>
-                    <b className="text-color-primary">Poznawaj</b> nowych
+                    <b className="text-color-secondary">Poznawaj</b> nowych
                     znajomych.
                   </li>
                   <li>
-                    <b className="text-color-primary">Oszczędzaj</b> pieniądze.
+                    <b className="text-color-secondary">Oszczędzaj</b>{" "}
+                    pieniądze.
                   </li>
                   <li>
-                    <b className="text-color-primary">Dojeżdzaj</b> w komforcie.
+                    <b className="text-color-secondary">Dojeżdzaj</b> w
+                    komforcie.
                   </li>
                 </ul>
               </p>

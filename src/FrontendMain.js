@@ -8,6 +8,7 @@ import ReactGA from "react-ga";
 import LayoutDefault from "./layouts/LayoutDefault";
 import About from "./layouts/About";
 import Map from "./layouts/Map";
+import Login from "./layouts/Login";
 // Views
 import Home from "./views/Home";
 
@@ -39,6 +40,7 @@ const FrontendMain = () => {
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute path="/about" layout={About} />
           <AppRoute path="/map" layout={Map} />
+          <AppRoute path="/login" layout={Login} />
         </Switch>
       )}
     />

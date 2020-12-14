@@ -88,7 +88,7 @@ const Header = ({
           )}
         >
           <Logo />
-          <Link to="/" className="text-color-secondary">
+          <Link to="/" className="text-color-secondary ">
             Wjazdeo.xyz
           </Link>
           {!hideNav && (
