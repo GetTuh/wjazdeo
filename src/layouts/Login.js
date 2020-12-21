@@ -6,6 +6,7 @@ import Login from "../components/sections/Login";
 const LayoutDefault = ({ children }) => (
   <div className="center-content mt-24 pt-8 container-sm">
     <Login />
+    <Footer />
   </div>
 );
 
