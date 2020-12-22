@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
-
+import "mapbox-gl/dist/mapbox-gl.css";
 import addRoute from "../../api/addRoute";
 import getAll from "../../api/getAll";
+import fetchRoute from "../../api/fetchRoute";
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -17,7 +18,7 @@ export default function Map() {
   const [clickedPointFrom, setClickedPointFrom] = useState(null);
   const [clickedPointTo, setClickedPointTo] = useState(null);
   let viewportChanged = false;
-  let unlockClicks = true;
+  let fetchPoints = async (from, to) => await fetchRoute(from, to);
   return (
     <div>
       <ReactMapGL
@@ -34,6 +35,7 @@ export default function Map() {
           } else {
             if (!clickedPointTo) {
               setClickedPointTo(clickedPoint);
+              addRoute("elo");
             }
           }
         }}
@@ -59,8 +61,10 @@ export default function Map() {
         {viewportChanged && clickedPointFrom && clickedPointTo && (
           <div>
             <PolylineOverlay
-              from={clickedPointFrom.lngLat}
-              to={clickedPointTo.lngLat}
+              points={fetchPoints(
+                clickedPointFrom.lngLat,
+                clickedPointTo.lngLat
+              )}
             ></PolylineOverlay>
           </div>
         )}

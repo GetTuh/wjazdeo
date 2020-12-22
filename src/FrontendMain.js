@@ -9,6 +9,7 @@ import LayoutDefault from "./layouts/LayoutDefault";
 import About from "./layouts/About";
 import Map from "./layouts/Map";
 import Login from "./layouts/Login";
+import noSite from "./layouts/NoSite";
 // Views
 import Home from "./views/Home";
 
@@ -29,7 +30,6 @@ const FrontendMain = () => {
     document.body.classList.add("is-loaded");
     childRef.current.init();
     trackPage(page);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
@@ -41,6 +41,7 @@ const FrontendMain = () => {
           <AppRoute path="/about" layout={About} />
           <AppRoute path="/map" layout={Map} />
           <AppRoute path="/login" layout={Login} />
+          <AppRoute layout={noSite} />
         </Switch>
       )}
     />
