@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
 import PolylineOverlay from "./PolylineOverlay";
 import "mapbox-gl/dist/mapbox-gl.css";
-import addRoute from "../../api/addRoute";
-import getAll from "../../api/getAll";
-import fetchRoute from "../../api/fetchRoute";
+
+import {
+  addRoute,
+  getAll,
+  grabRouteFromFauna,
+  fetchRoute,
+} from "../../api/apiExport";
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -65,6 +69,7 @@ export default function Map() {
                 clickedPointFrom.lngLat,
                 clickedPointTo.lngLat
               )}
+              // points={grabRouteFromFauna}
             ></PolylineOverlay>
           </div>
         )}
