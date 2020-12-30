@@ -65,11 +65,11 @@ export default function Map() {
         {viewportChanged && clickedPointFrom && clickedPointTo && (
           <div>
             <PolylineOverlay
-              points={fetchPoints(
-                clickedPointFrom.lngLat,
-                clickedPointTo.lngLat
-              )}
-              // points={grabRouteFromFauna}
+              // points={fetchPoints(
+              //   clickedPointFrom.lngLat,
+              //   clickedPointTo.lngLat
+              // )}
+              points={grabRouteFromFauna}
             ></PolylineOverlay>
           </div>
         )}
