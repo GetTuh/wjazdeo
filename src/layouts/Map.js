@@ -2,7 +2,7 @@ import React from "react";
 import Map from "../components/mapView/Map";
 const LayoutDefault = ({ children }) => (
   <>
-    <Map></Map>
+    <Map className="center-content mt-24 pt-8 container-sm"></Map>
   </>
 );
 

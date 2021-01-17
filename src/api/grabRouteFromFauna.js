@@ -1,12 +1,12 @@
 import { client, q } from "../configs/db";
 
-const getAllNotes = client
-  .query(q.Paginate(q.Match(q.Ref("indexes/wszystkie_dojazdy"))))
+const getAll = client
+  .query(q.Paginate(q.Ref(q.Collection("dojazdy"), "285547072400130561")))
   .then((response) => {
-    const notesRefs = response.data;
+    const mapRefs = response.data;
     // create new query out of notes refs.
     // https://docs.fauna.com/fauna/current/api/fql/
-    const getAllProductDataQuery = notesRefs.map((ref) => {
+    const getAllProductDataQuery = mapRefs.map((ref) => {
       return q.Get(ref);
     });
     // query the refs
@@ -14,4 +14,4 @@ const getAllNotes = client
   })
   .catch((error) => console.warn("error", error.message));
 
-export default getAllNotes;
+export default getAll;
