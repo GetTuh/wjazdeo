@@ -98,13 +98,17 @@ export default function Map() {
         {viewportChanged && clickedPointFrom && clickedPointTo && (
           <div>
             <PolylineOverlay
-              // points={fetchPoints(
-              //   clickedPointFrom.lngLat,
-              //   clickedPointTo.lngLat
-              // )}
-              points={grabRouteFromFauna}
+              points={fetchPoints(
+                clickedPointFrom.lngLat,
+                clickedPointTo.lngLat
+              )}
             ></PolylineOverlay>
           </div>
+        )}
+        {viewportChanged && (
+          <PolylineOverlay
+            points={grabRouteFromFauna("285547072400130561")}
+          ></PolylineOverlay>
         )}
       </ReactMapGL>{" "}
       {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}

@@ -1,6 +1,6 @@
 import { client, q } from "../configs/db";
 
-const getAll = client
+const getRoute = client
   .query(q.Paginate(q.Ref(q.Collection("dojazdy"), "285547072400130561")))
   .then((response) => {
     const mapRefs = response.data;
@@ -14,4 +14,4 @@ const getAll = client
   })
   .catch((error) => console.warn("error", error.message));
 
-export default getAll;
+export default getRoute;
