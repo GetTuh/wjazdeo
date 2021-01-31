@@ -107,7 +107,7 @@ export default function Map() {
         )}
         {viewportChanged && (
           <PolylineOverlay
-            points={grabRouteFromFauna("285547072400130561")}
+            points={grabRouteFromFauna}
           ></PolylineOverlay>
         )}
       </ReactMapGL>{" "}
