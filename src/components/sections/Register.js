@@ -2,15 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../elements/Button";
 import { useForm } from "react-hook-form";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => console.log(data);
-
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
 
   return (
     <div className="container ">
@@ -54,10 +49,6 @@ const Register = () => {
             <span className="text-color-error">Hasło jest wymagane</span>
           )}
         </div>
-        {/* <ReCAPTCHA
-          sitekey="6LfeJ0QaAAAAAASNObv6d_RYSyzS3MYkpH8BmKfd"
-          onChange={onChange}
-        /> */}
         <Button className="mt-16" type="submit" disabled>
           Zarejestruj się!
         </Button>
