@@ -2,10 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../elements/Button";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
+import addUser from "../../api/addUser";
 const Register = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const history = useHistory();
+
+  function gotoLogin() {
+    history.push("/login");
+  }
+
+  const onSubmit = (data) => {
+    addUser(data);
+    alert("Użytkownik utworzony!");
+    gotoLogin();
+  };
 
   return (
     <div className="container ">
@@ -48,8 +60,22 @@ const Register = () => {
           {errors.pass && (
             <span className="text-color-error">Hasło jest wymagane</span>
           )}
+          <h6 className="text-color-secondary">
+            Numer telefonu
+            <input
+              type="tel"
+              name="tel"
+              className="center-content  ml-16 ta-r has-shadow"
+              ref={register({ required: true })}
+            />
+          </h6>
+          {errors.pass && (
+            <span className="text-color-error">
+              Numer telefonu jest wymagany!
+            </span>
+          )}
         </div>
-        <Button className="mt-16" type="submit" disabled>
+        <Button className="mt-16" type="submit" Link to={"/login"}>
           Zarejestruj się!
         </Button>
       </form>
