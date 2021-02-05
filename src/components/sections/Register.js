@@ -43,7 +43,7 @@ const Register = () => {
             Email
             <input
               type="email"
-              name="login"
+              name="email"
               className="center-content ml-16 ta-r m-0 has-shadow"
               ref={register}
             />
