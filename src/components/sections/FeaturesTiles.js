@@ -43,9 +43,9 @@ const FeaturesTiles = ({
   );
 
   const sectionHeader = {
-    title: "LOREM IPSUM",
+    title: "Dlaczego wjazdeo?",
     paragraph:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum — semper quis lectus nulla at volutpat diam ut venenatis.",
+      "Codziennie do pracy miliony osób dojeżdza samochodem do pracy, mając 4 lub 5 miejsc wolnych. Czas to zmienić.",
   };
 
   return (
@@ -62,7 +62,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/mon.png")}
                       alt="Features tile icon 01"
                       width={64}
                       height={64}
@@ -70,11 +70,11 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Oszczędzaj pieniądze</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Polacy wydają średnio około <b>13%</b> swojego domowego
+                    budżetu na transport. Po co płacić za puste miejsca w
+                    samochodzie?
                   </p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/fren.png")}
                       alt="Features tile icon 02"
                       width={64}
                       height={64}
@@ -96,11 +96,10 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Poznawaj ludzi</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Chcesz poznać więcej osób pracujących niedaleko? Wjazdeo to
+                    świetny sposób na nawiązywanie kontaktów!
                   </p>
                 </div>
               </div>
@@ -114,7 +113,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/comf.png")}
                       alt="Features tile icon 03"
                       width={64}
                       height={64}
@@ -122,11 +121,10 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Podróżuj w komforcie</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Jeżeli dojeżdzasz środkami publicznego transportu, docenisz
+                    komfort i przestronność samochodu.
                   </p>
                 </div>
               </div>
@@ -137,7 +135,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/eco.png")}
                       alt="Features tile icon 04"
                       width={64}
                       height={64}
@@ -145,11 +143,10 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Wspomóż planetę</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Dojeżdzając razem ograniczysz produkcję dwutlenku węgla i
+                    pomożesz w walce z globalnym ociepleniem!
                   </p>
                 </div>
               </div>
@@ -163,7 +160,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/traf.png")}
                       alt="Features tile icon 05"
                       width={64}
                       height={64}
@@ -171,11 +168,11 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Ogranicz korki</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Dzięki wspólnemu podróżowaniu ilość samochodów na
+                    zakorkowanych ulicach w godzinach szczytu może stanowczo się
+                    zmniejszyć!
                   </p>
                 </div>
               </div>
@@ -189,7 +186,7 @@ const FeaturesTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require("./../../assets/images/icon.png")}
+                      src={require("./../../assets/images/help.png")}
                       alt="Features tile icon 06"
                       width={64}
                       height={64}
@@ -197,11 +194,11 @@ const FeaturesTiles = ({
                   </div>
                 </div>
                 <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">zalety</h4>
+                  <h4 className="mt-0 mb-8">Nie bądź zdany na siebie!</h4>
                   <p className="m-0 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat.
+                    Złapałeś gumę ale nie umiesz wymienić koła? A może za szybko
+                    tracisz nerwy w korku? Z towarzyszem u boku będziesz lepiej
+                    przygotowany na niespodziewane sytuacje.
                   </p>
                 </div>
               </div>
