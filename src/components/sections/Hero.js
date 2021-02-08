@@ -99,9 +99,6 @@ const Hero = ({
             />
           </div>
         </div>
-        <Link to="/map" className="reveal-from-bottom">
-          <Button>Zobacz mapę z dojazdami</Button>
-        </Link>
       </div>
     </section>
   );

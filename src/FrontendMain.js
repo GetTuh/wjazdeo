@@ -11,6 +11,7 @@ import Map from "./layouts/Map";
 import Login from "./layouts/Login";
 import noSite from "./layouts/NoSite";
 import Register from "./layouts/Register";
+import loggedIn from "./layouts/loggedIn";
 // Views
 import Home from "./views/Home";
 
@@ -43,6 +44,7 @@ const FrontendMain = () => {
           <AppRoute path="/map" layout={Map} />
           <AppRoute path="/login" layout={Login} />
           <AppRoute path="/register" layout={Register} />
+          <AppRoute path="/loggedIn" layout={loggedIn} />
           <AppRoute layout={noSite} />
         </Switch>
       )}

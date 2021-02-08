@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import Button from "../elements/Button";
 import { useForm } from "react-hook-form";
 import checkUser from "../../api/checkUser";
+import { useHistory } from "react-router-dom";
+
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     checkUser(data);
+    gotoLoggedIn();
   };
+
+  const history = useHistory();
+
+  function gotoLoggedIn() {
+    history.push("/loggedIn");
+  }
 
   return (
     <div className="container ">

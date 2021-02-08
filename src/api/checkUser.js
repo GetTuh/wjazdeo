@@ -15,7 +15,9 @@ const getAll = (login) =>
         for (const element of data) {
           if (element.data.email == login.email) {
             if (element.data.pass == login.pass) {
-              alert(`Zalogowono pomyślnie jako ${element.data.name}`);
+              sessionStorage.clear();
+              sessionStorage.setItem("name", element.data.name);
+              sessionStorage.setItem("email", element.data.email);
             } else {
               alert(`Podane hasło jest nieprawidłowe!`);
             }
