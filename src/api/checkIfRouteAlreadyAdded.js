@@ -2,7 +2,7 @@ import { client, q } from "../configs/db";
 
 const getAllNotes = (data) =>
   client
-    .query(q.Paginate(q.Match(q.Ref("indexes/wszystkie_dojazdy"))))
+    .query(q.Paginate(q.Match(q.Ref("indexes/trips"))))
     .then((response) => {
       const notesRefs = response.data;
       // create new query out of notes refs.
