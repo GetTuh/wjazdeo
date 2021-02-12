@@ -9,6 +9,7 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     checkUser(data);
+    sessionStorage.setItem("res", 1);
     gotoLoggedIn();
   };
 

@@ -60,7 +60,7 @@ const Hero = ({
                     znajomych.
                   </li>
                   <li>
-                    <b className="text-color-secondary">Oszczędzaj</b>{" "}
+                    <b className="text-color-secondary">Oszczędzaj</b>
                     pieniądze.
                   </li>
                   <li>
@@ -69,6 +69,7 @@ const Hero = ({
                   </li>
                 </ul>
               </p>
+
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
                   <Link to="/register">

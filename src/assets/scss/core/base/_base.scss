@@ -5,16 +5,11 @@ html {
 *,
 *:before,
 *:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit;
 }
 
 body {
-  background: color-bg(
-    body
-  ); /* Fallback for when there is no custom background color defined. */
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  background: color-bg(body);
 }
 
 hr {

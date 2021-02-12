@@ -29,6 +29,7 @@ const Login = () => {
         Witamy! Jesteś zalogowany jako{" "}
         <b className="text-color-primary">{sessionStorage.getItem("name")}</b>
       </h3>
+
       <Button className="mr-0" onClick={logout}>
         Wyloguj
       </Button>
