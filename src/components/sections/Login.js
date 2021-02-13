@@ -7,10 +7,14 @@ import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
-    checkUser(data);
-    sessionStorage.setItem("res", 1);
-    gotoLoggedIn();
+  const onSubmit = async (data) => {
+    const returnedError = await checkUser(data);
+    if (!returnedError) {
+      sessionStorage.setItem("res", 1);
+      gotoLoggedIn();
+    } else {
+      alert(returnedError);
+    }
   };
 
   const history = useHistory();

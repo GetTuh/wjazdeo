@@ -67,11 +67,13 @@ export default function Map() {
         }
         onClick={(clickedPoint) => {
           if (!clickedPointFrom) {
-            console.log(checkIfRouteAlreadyAdded(testData));
+            // console.log(checkIfRouteAlreadyAdded(testData));
             setClickedPointFrom(clickedPoint);
+            console.log(clickedPoint.lngLat);
           } else {
             if (!clickedPointTo) {
               setClickedPointTo(clickedPoint);
+              console.log(clickedPoint.lngLat);
               // addRoute("elo");
             }
           }
@@ -103,13 +105,15 @@ export default function Map() {
                 clickedPointTo.lngLat
               )}
             ></PolylineOverlay>
+            {/* points={fetchPoints(
+                clickedPointFrom.lngLat,
+                clickedPointTo.lngLat
+              )} */}
           </div>
         )}
-        {viewportChanged && (
-          <PolylineOverlay
-            points={grabRouteFromFauna}
-          ></PolylineOverlay>
-        )}
+        {/* {viewportChanged && (
+          <PolylineOverlay points={grabRouteFromFauna}></PolylineOverlay>
+        )} */}
       </ReactMapGL>{" "}
       {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}
       {/* <Button onClick={}>Prześlij dane</Button> */}
