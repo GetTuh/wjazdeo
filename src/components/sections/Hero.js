@@ -60,7 +60,7 @@ const Hero = ({
                     znajomych.
                   </li>
                   <li>
-                    <b className="text-color-secondary">Oszczędzaj</b>
+                    <b className="text-color-secondary">Oszczędzaj </b>
                     pieniądze.
                   </li>
                   <li>

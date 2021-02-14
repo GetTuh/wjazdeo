@@ -10,19 +10,19 @@ const incorrectPassword = {
   pass: "error",
 };
 
-test("Loguje z poprawnymi danami", () => {
+test("Próba logowania z poprawnymi danami", () => {
   return checkUser(correctUser).then(() => {
-    expect(sessionStorage.getItem("name")).toBe("Jeronim Czerwinski");
+    expect(sessionStorage.getItem("name")).toBe("Stanislaw Czerwinski");
   });
 });
 
-test("Loguje z błędnymi danami", () => {
+test("Próba logowania z błędnymi danami", () => {
   return checkUser(incorrectUser).then((data) => {
     expect(data).toBe(undefined);
   });
 });
 
-test("Loguje z błędnym hasłem", () => {
+test("Próba logowania z błędnym hasłem", () => {
   return checkUser(incorrectPassword).then((data) => {
     expect(data).toBe("Złe hasło!");
   });
