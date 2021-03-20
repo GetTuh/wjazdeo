@@ -7,7 +7,8 @@ import ReactGA from "react-ga";
 // Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 import About from "./layouts/About";
-import Map from "./layouts/Map";
+import MapAdd from "./layouts/MapAdd";
+import MapSearch from "./layouts/MapSearch";
 import Login from "./layouts/Login";
 import noSite from "./layouts/NoSite";
 import Register from "./layouts/Register";
@@ -41,7 +42,8 @@ const FrontendMain = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute path="/about" layout={About} />
-          <AppRoute path="/map" layout={Map} />
+          <AppRoute path="/mapAdd" layout={MapAdd} />
+          <AppRoute path="/mapSearch" layout={MapSearch} />
           <AppRoute path="/login" layout={Login} />
           <AppRoute path="/register" layout={Register} />
           <AppRoute path="/loggedIn" layout={loggedIn} />

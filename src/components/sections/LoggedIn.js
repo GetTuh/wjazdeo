@@ -29,8 +29,37 @@ const Login = () => {
         Witamy! Jesteś zalogowany jako{" "}
         <b className="text-color-primary">{sessionStorage.getItem("name")}</b>
       </h3>
-
-      <Button className="mr-0" onClick={logout}>
+      <h4>Twoje przejazdy:</h4>
+      <table>
+        <tr>
+          <td>Od</td>
+          <td>Do</td>
+          <td>Godzina</td>
+          <td>Liczba miejsc</td>
+          <td>Edytuj</td>
+        </tr>
+        <tr>
+          <td>Ludwika Waryńskiego 30/31, 80-433 Gdańsk</td>
+          <td>Tama Pędzichowska 19, 83-021 Przejazdowo</td>
+          <td>7:00</td>
+          <td>3</td>
+          <td>
+            <Button>Edytuj</Button>
+          </td>
+        </tr>
+        <tr>
+          <td>Tama Pędzichowska 19, 83-021 Przejazdowo</td>
+          <td>Ludwika Waryńskiego 30/31, 80-433 Gdańsk</td>
+          <td>15:00</td>
+          <td>3</td>
+          <td>
+            <Button>Edytuj</Button>
+          </td>
+        </tr>
+      </table>
+      <Button className="m-24">Dodaj trasę</Button>
+      <Button className="m-24">Wyszukaj dojazdu dla Ciebie!</Button>
+      <Button className="m-24" onClick={logout}>
         Wyloguj
       </Button>
     </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
+
 import PolylineOverlay from "./PolylineOverlay";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Button from "../elements/Button";
 
 import {
   addRoute,
@@ -14,7 +16,6 @@ import {
 const testData = {
   user_ID: "elo",
   hour: "8:00",
-  days: [1, 2],
   points: [
     [18.641721, 54.362294],
     [18.636793, 54.36521],
@@ -54,6 +55,9 @@ export default function Map() {
   const [clickedPointFrom, setClickedPointFrom] = useState(null);
   const [clickedPointTo, setClickedPointTo] = useState(null);
   let viewportChanged = false;
+  const r = addRoute;
+  const z = getAll;
+  const zs = checkIfRouteAlreadyAdded;
   let fetchPoints = async (from, to) => await fetchRoute(from, to);
   return (
     <div>
@@ -84,39 +88,55 @@ export default function Map() {
             key="from"
             latitude={clickedPointFrom.lngLat[1]}
             longitude={clickedPointFrom.lngLat[0]}
+            closeButton={false}
           >
             <b className="text-color-primary"> Od</b>
           </Popup>
         ) : null}
         {clickedPointTo ? (
-          <Marker
+          <Popup
             key="to"
             latitude={clickedPointTo.lngLat[1]}
             longitude={clickedPointTo.lngLat[0]}
+            closeButton={false}
           >
-            <div className="text-color-primary">Do</div>
-          </Marker>
+            <b className="text-color-primary">Do</b>
+          </Popup>
         ) : null}
-        {viewportChanged && clickedPointFrom && clickedPointTo && (
+
+        {viewportChanged && (
           <div>
-            <PolylineOverlay
-              points={fetchPoints(
-                clickedPointFrom.lngLat,
-                clickedPointTo.lngLat
-              )}
-            ></PolylineOverlay>
-            {/* points={fetchPoints(
-                clickedPointFrom.lngLat,
-                clickedPointTo.lngLat
-              )} */}
+            <PolylineOverlay points={grabRouteFromFauna}></PolylineOverlay>
           </div>
         )}
-        {/* {viewportChanged && (
-          <PolylineOverlay points={grabRouteFromFauna}></PolylineOverlay>
-        )} */}
+        <center className="text-center text-color-primary insert-table">
+          <b>Twoja trasa z </b>
+          <b className="text-color-secondary"> Kolejowa 5, 80-201 Gdańsk </b>
+          <b>Do:</b>
+          <b className="text-color-secondary"> Niwki 30, 80-731 Gdańsk </b>
+          <b>Podaj godzinę:</b>
+          <input type="time" value="07:00" className="timeinput"></input>
+          <Button className="text-color-success m-12">Zatwierdź trasę!</Button>
+          <Button className="text-color-error m-12">Powrót do wjazdeo</Button>
+        </center>
       </ReactMapGL>{" "}
       {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}
-      {/* <Button onClick={}>Prześlij dane</Button> */}
     </div>
   );
 }
+
+// klik
+// {viewportChanged && clickedPointFrom && clickedPointTo && (
+//   <div>
+//     <PolylineOverlay
+//       points={fetchPoints(
+//         clickedPointFrom.lngLat,
+//         clickedPointTo.lngLat
+//       )}
+//     ></PolylineOverlay>
+//     {/* points={fetchPoints(
+//         clickedPointFrom.lngLat,
+//         clickedPointTo.lngLat
+//       )} */}
+//   </div>
+// )}
