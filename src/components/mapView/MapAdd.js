@@ -57,6 +57,8 @@ export default function Map() {
       street_names: [streetNameFrom, streetNameTo],
       hour: hour,
       places: 3,
+      name: sessionStorage.getItem("name"),
+      tel: sessionStorage.getItem("tel"),
     });
     gotoLoggedIn();
   };

@@ -16,6 +16,7 @@ const checkUser = (login) =>
               sessionStorage.clear();
               sessionStorage.setItem("name", element.data.name);
               sessionStorage.setItem("email", element.data.email);
+              sessionStorage.setItem("tel", element.data.tel);
             } else {
               return "Złe hasło!";
             }

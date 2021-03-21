@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import PolylineOverlay from "./PolylineOverlayBlue";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Button from "../elements/Button";
-import { useHistory } from "react-router-dom";
 import { getAll, fetchRoute, fetchStreetName } from "../../api/apiExport";
-import { get } from "lodash";
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -21,8 +19,8 @@ export default function Map() {
   const [clickedPointTo, setClickedPointTo] = useState(null);
   const [streetNameFrom, setstreetNameFrom] = useState(null);
   const [streetNameTo, setstreetNameTo] = useState(null);
-  const [hour, setHour] = useState(null);
-  const history = useHistory();
+  const [routesRatedPoints, setRoutesRatedPoints] = useState(null);
+  const [currentRouteRating, setCurrentRouteRating] = useState(0);
   let viewportChanged = false;
   let sentPoints = "";
   let fetchPoints = async (from, to) => {
@@ -52,42 +50,39 @@ export default function Map() {
       .then(async (data) => {
         let routes = await getAll;
 
-        console.log(routes);
-        console.log(data);
+        // console.log(routes);
+        // console.log(data);
         let routeRating = [];
         routes.forEach((item) => {
-          let ref = item.ref;
-          ref = ref.toString().replace(/[^0-9]/g, "");
           let routeItem = item.data.points.map((z) =>
             z.map((x) => Math.round(x * 1000 + Number.EPSILON) / 1000)
           );
-          // console.log(`data from fauna ${routeItem}`);
           data = data.map((z) =>
             z.map((x) => Math.round(x * 1000 + Number.EPSILON) / 1000)
           );
-          // console.log(`current route: ${data}`);
           let intersections = routeItem.concat(data);
           let rating = 0;
-          const counts = intersections.reduce(
-            (acc, value) => ({
-              ...acc,
-              [value]: (acc[value] || 0) + 1,
-            }),
-            {}
-          );
-
+          const counts = intersections.reduce((acc, value) => ({
+            ...acc,
+            [value]: (acc[value] || 0) + 1,
+          }));
           for (const [, value] of Object.entries(counts)) {
             if (value == 2) {
               rating++;
             }
           }
-          console.log(`${ref} rating: ${rating}`);
-          if (rating > 3) routeRating = routeRating.concat([[ref, rating]]);
+          // console.log(`rating: ${rating}`);
+          if (rating > 3)
+            routeRating = routeRating.concat([[item.data, rating]]);
         });
-        console.log(routeRating);
-        const routeRatingSorted = routeRating.sort((a, b) => a[1] - b[1]);
-        console.log(routeRatingSorted);
+        const ratedRoutes = routeRating.sort((a, b) => b[1] - a[1]);
+        setRoutesRatedPoints(ratedRoutes[0]);
+        console.log(ratedRoutes);
       });
+  };
+  const drawLine = async () => {
+    // console.log(routesRatedPoints[0]);
+    return await routesRatedPoints[0].points;
   };
   return (
     <div className="map-container">
@@ -111,9 +106,9 @@ export default function Map() {
                 Wybierz gdzie chcesz dojechać!
               </b>
             )}
-            {clickedPointFrom && clickedPointTo && (
+            {!routesRatedPoints && clickedPointFrom && clickedPointTo && (
               <div>
-                Twoja trasa z{" "}
+                Wyruszasz z{" "}
                 <b className="text-color-secondary">{streetNameFrom}</b> Do:{" "}
                 <b className="text-color-secondary">
                   {fetchNameTo(
@@ -135,7 +130,35 @@ export default function Map() {
                   </Link>
                 </div>
               </div>
-            )}{" "}
+            )}
+            {routesRatedPoints && (
+              <div>
+                <b>Dopasowany do ciebie kierowca to:&nbsp;</b>
+                <b className="text-color-secondary">
+                  {routesRatedPoints[0].name}
+                </b>
+                <b>&nbsp;Dojeżdza na pokazanej trasie w godzinach:&nbsp;</b>
+                <b className="text-color-secondary">
+                  {routesRatedPoints[0].hour}
+                </b>
+                <b>&nbsp;Numer kontaktowy:&nbsp;</b>
+                <b className="text-color-secondary">
+                  {routesRatedPoints[0].tel}
+                </b>
+                <div>
+                  <Link to="/loggedIn">
+                    <Button className="text-color-success m-12">
+                      Wyszukaj inną trasę
+                    </Button>
+                  </Link>
+                  <Link to="/loggedIn">
+                    <Button className="text-color-error m-12">
+                      Powrót do wjazdeo
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            )}
             {(!clickedPointFrom || !clickedPointTo) && (
               <Link to="/loggedIn">
                 <Button className="text-color-error m-4">
@@ -185,15 +208,9 @@ export default function Map() {
           </Popup>
         ) : null}
 
-        {viewportChanged && clickedPointFrom && clickedPointTo && (
+        {viewportChanged && routesRatedPoints && (
           <div>
-            {/* <PolylineOverlay
-              points={fetchPoints(
-                clickedPointFrom.lngLat,
-                clickedPointTo.lngLat
-              )}
-            ></PolylineOverlay> */}
-            trasa elo
+            <PolylineOverlay points={drawLine()}></PolylineOverlay>
           </div>
         )}
       </ReactMapGL>{" "}
