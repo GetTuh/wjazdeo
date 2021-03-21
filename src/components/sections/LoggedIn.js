@@ -92,6 +92,7 @@ const Login = () => {
                     <td className="timeinput">
                       <select id="selectNumber" onChange={readPlaces}>
                         <option value="-">-</option>
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -146,7 +147,9 @@ const Login = () => {
       <Link to="/mapAdd">
         <Button className="m-24">Dodaj trasę</Button>
       </Link>
-      <Button className="m-24">Wyszukaj dojazdu dla Ciebie!</Button>
+      <Link to="/mapSearch">
+        <Button className="m-24">Wyszukaj dojazdu dla Ciebie!</Button>
+      </Link>
       <Button className="m-24" onClick={logout}>
         Wyloguj
       </Button>
