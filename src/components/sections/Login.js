@@ -37,6 +37,8 @@ const Login = () => {
           <h6 className="text-color-secondary container-small">
             Email
             <input
+              wide
+              wideMobile
               type="email"
               name="email"
               className="center-content ml-16 ta-r m-0 has-shadow"
@@ -56,7 +58,7 @@ const Login = () => {
             <span className="text-color-error">Hasło jest wymagane</span>
           )}
         </div>
-        <Button className="mt-16" type="submit">
+        <Button className="mt-16" wideMobile type="submit">
           Zaloguj się
         </Button>
       </form>

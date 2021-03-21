@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import Logo from "./partials/Logo";
+import { useHistory } from "react-router-dom";
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -77,7 +78,11 @@ const Header = ({
     bottomOuterDivider && "has-bottom-divider",
     className
   );
-
+  const clearStorage = () => {
+    sessionStorage.clear();
+    history.push("/");
+  };
+  const history = useHistory();
   return (
     <header {...props} className={classes}>
       <div className="container">
@@ -88,7 +93,7 @@ const Header = ({
           )}
         >
           <Logo />
-          <Link to="/" className="text-color-secondary ">
+          <Link to="/" className="text-color-secondary text-center ">
             Wjazdeo.xyz
           </Link>
           {!hideNav && (
@@ -118,7 +123,21 @@ const Header = ({
                       <Link to="/about">Dowiedz się więcej</Link>
                     </li>
                     <li>
-                      <Link to="/contact">Kontakt</Link>
+                      {sessionStorage.getItem("name") && (
+                        <li>
+                          <center>
+                            <Link to="/loggedIn">
+                              {sessionStorage.getItem("name")}
+                            </Link>
+                            <Link to="/" onClick={clearStorage}>
+                              Wyloguj
+                            </Link>
+                          </center>
+                        </li>
+                      )}
+                      {!sessionStorage.getItem("name") && (
+                        <li>Niezalogowany</li>
+                      )}
                     </li>
                   </ul>
                 </div>

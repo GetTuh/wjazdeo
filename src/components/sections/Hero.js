@@ -73,12 +73,12 @@ const Hero = ({
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
                   <Link to="/register">
-                    <Button color="secondary" wideMobile>
+                    <Button color="secondary" className="m-12" wideMobile>
                       Zarejestruj się
                     </Button>
                   </Link>
                   <Link to="/login">
-                    <Button color="dark" wideMobile>
+                    <Button color="dark" className="m-12" wideMobile>
                       Zaloguj się
                     </Button>
                   </Link>

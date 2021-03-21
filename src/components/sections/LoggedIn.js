@@ -38,7 +38,12 @@ const Login = () => {
   };
   const sendEdits = () => {
     const ref = editing.replace(/[^0-9]/g, "");
-    const data = { ref: ref, hour: hour, places: places };
+    let data = {};
+    if (hour && places) {
+      data = { ref: ref, hour: hour, places: places };
+    } else if (hour) {
+      data = { ref: ref, hour: hour };
+    } else data = { ref: ref, places: places };
     alterDocument(data);
     window.location.reload();
   };
@@ -57,7 +62,7 @@ const Login = () => {
       <h4>Twoje przejazdy:</h4>
 
       {routes && (
-        <table>
+        <table reveal-delay="200" reveal-from-left>
           {" "}
           <tr>
             <td>Od</td>
@@ -86,6 +91,7 @@ const Login = () => {
                   {editing == item.ref && (
                     <td className="timeinput">
                       <select id="selectNumber" onChange={readPlaces}>
+                        <option value="-">-</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -119,7 +125,7 @@ const Login = () => {
                         id={item.ref}
                         onClick={sendEdits}
                       >
-                        Wyślij
+                        Zmień
                       </Button>
                       <Button
                         className="few-buttons"
