@@ -25,6 +25,7 @@ export default function Map() {
   function gotoLoggedIn() {
     alert("Dodano trasę!");
     history.push("/loggedIn");
+    window.location.reload();
   }
   let viewportChanged = false;
   let sentPoints = "";
@@ -55,6 +56,7 @@ export default function Map() {
       points: sentPoints,
       street_names: [streetNameFrom, streetNameTo],
       hour: hour,
+      places: 3,
     });
     gotoLoggedIn();
   };
@@ -93,7 +95,6 @@ export default function Map() {
                 &nbsp;Podaj godzinę:
                 <input
                   type="time"
-                  step="300"
                   className="timeinput"
                   onChange={(event) => setHour(event.target.value)}
                 ></input>
@@ -111,6 +112,13 @@ export default function Map() {
                   </Link>
                 </div>
               </div>
+            )}{" "}
+            {(!clickedPointFrom || !clickedPointTo) && (
+              <Link to="/loggedIn">
+                <Button className="text-color-error m-4">
+                  Powrót do wjazdeo
+                </Button>
+              </Link>
             )}
           </div>
         </center>
