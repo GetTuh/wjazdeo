@@ -57,7 +57,9 @@ const Login = () => {
           </td>
         </tr>
       </table>
-      <Button className="m-24">Dodaj trasę</Button>
+      <Link to="/mapAdd">
+        <Button className="m-24">Dodaj trasę</Button>
+      </Link>
       <Button className="m-24">Wyszukaj dojazdu dla Ciebie!</Button>
       <Button className="m-24" onClick={logout}>
         Wyloguj

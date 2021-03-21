@@ -4,7 +4,7 @@ const createNote = (data) =>
   client
     .query(
       q.Create(q.Collection("dojazdy"), {
-        data: { data },
+        data,
       })
     )
     .then((ret) => ret)

@@ -2,14 +2,13 @@ import React, { PureComponent } from "react";
 import { CanvasOverlay } from "react-map-gl";
 export default class PolylineOverlay extends PureComponent {
   _redraw({ width, height, ctx, isDragging, project }) {
-    const { color = "red", lineWidth = 2, points } = this.props;
+    const { color = "green", lineWidth = 2, points } = this.props;
     async function returnRoute(points) {
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "lighter";
+
       if (!isDragging && (await points)) {
-        console.log(points);
         points = await points;
-        points = points[Object.keys(points)[0]].data.points; //FAUNA .data.points
         ctx.lineWidth = lineWidth;
         ctx.strokeStyle = color;
         ctx.beginPath();

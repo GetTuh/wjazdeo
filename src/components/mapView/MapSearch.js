@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker, Layer, Popup } from "react-map-gl";
 
-import PolylineOverlay from "./PolylineOverlay";
+import PolylineOverlay from "./PolylineOverlayBlue";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Button from "../elements/Button";
 
@@ -10,38 +10,7 @@ import {
   getAll,
   grabRouteFromFauna,
   fetchRoute,
-  checkIfRouteAlreadyAdded,
 } from "../../api/apiExport";
-
-const testData = {
-  user_ID: "elo",
-  hour: "8:00",
-  points: [
-    [18.641721, 54.362294],
-    [18.636793, 54.36521],
-    [18.636421, 54.365004],
-    [18.64094, 54.362308],
-    [18.645557, 54.358152],
-    [18.645024, 54.353804],
-    [18.646036, 54.351703],
-    [18.645657, 54.349851],
-    [18.644856, 54.348422],
-    [18.645243, 54.347744],
-    [18.649826, 54.346907],
-    [18.656842, 54.34535],
-    [18.663671, 54.344383],
-    [18.668027, 54.345447],
-    [18.66885, 54.346202],
-    [18.669802, 54.348137],
-    [18.670811, 54.348664],
-    [18.674571, 54.349118],
-    [18.683191, 54.348959],
-    [18.682717, 54.348055],
-    [18.6798, 54.345741],
-    [18.685721, 54.340653],
-    [18.680931, 54.338551],
-  ],
-};
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -57,7 +26,6 @@ export default function Map() {
   let viewportChanged = false;
   const r = addRoute;
   const z = getAll;
-  const zs = checkIfRouteAlreadyAdded;
   let fetchPoints = async (from, to) => await fetchRoute(from, to);
   return (
     <div>
@@ -71,14 +39,12 @@ export default function Map() {
         }
         onClick={(clickedPoint) => {
           if (!clickedPointFrom) {
-            // console.log(checkIfRouteAlreadyAdded(testData));
             setClickedPointFrom(clickedPoint);
             console.log(clickedPoint.lngLat);
           } else {
             if (!clickedPointTo) {
               setClickedPointTo(clickedPoint);
               console.log(clickedPoint.lngLat);
-              // addRoute("elo");
             }
           }
         }}
@@ -110,17 +76,18 @@ export default function Map() {
           </div>
         )}
         <center className="text-center text-color-primary insert-table">
-          <b>Twoja trasa z </b>
-          <b className="text-color-secondary"> Kolejowa 5, 80-201 Gdańsk </b>
-          <b>Do:</b>
-          <b className="text-color-secondary"> Niwki 30, 80-731 Gdańsk </b>
-          <b>Podaj godzinę:</b>
-          <input type="time" value="07:00" className="timeinput"></input>
-          <Button className="text-color-success m-12">Zatwierdź trasę!</Button>
+          <b>Dopasowany do ciebie kierowca to </b>
+          <b className="text-color-secondary"> {"Jeronim Czerwiński"} </b>
+          <b>Dojeżdża na pokazanej trasie w godzinach:</b>
+          <b className="text-color-secondary"> {"7:00"} </b>
+          <b>Numer kontaktowy:</b>
+          <b className="text-color-secondary"> {"numewwwwwwwwwwwwr"} </b>
+          <Button className="text-color-success m-12">
+            Wyszukaj inną trasę!
+          </Button>
           <Button className="text-color-error m-12">Powrót do wjazdeo</Button>
         </center>
-      </ReactMapGL>{" "}
-      {/* get name of street from cords `https://api.mapbox.com/geocoding/v5/mapbox.places/${lat},${long}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */}
+      </ReactMapGL>
     </div>
   );
 }
