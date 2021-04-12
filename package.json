@@ -44,8 +44,6 @@
   },
   "jest": {
     "globals": {
-      "REACT_APP_MAPBOX_TOKEN": "pk.eyJ1IjoieHlsZXN0ZWFtIiwiYSI6ImNrZGZ3bHR2czJsMGgycnM4Z3FleW42ZjAifQ.tupUYqskYtltylQBf6PW4Q",
-      "REACT_APP_FAUNADB_KEY": "fnAD7HcslTACAShVUQekXxbvVUTo-X3qDSfemRSi"
     }
   }
 }
